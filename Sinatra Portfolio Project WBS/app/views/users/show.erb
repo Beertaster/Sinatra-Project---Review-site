@@ -1,0 +1,9 @@
+<h2><%= @user.name %>'s Home Page</h2>
+
+<h3>password </h3>
+<h4><%= @user.password %></h4>
+
+<h3>Posts: </h3>
+<% @posts.each do |post| %>
+<h4><%= post.title %></h4>
+<% end %>

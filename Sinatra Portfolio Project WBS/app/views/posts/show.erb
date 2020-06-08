@@ -1,0 +1,17 @@
+<h3><%= @post.title %></h3>
+<p><%= @post.content %></p>
+<p>Recipe: <%= @post.review %></p>
+
+<p>Created by: <%= @post.user.name %></p>
+
+<p>created on <%= @post.formatted_created_at %></p>
+
+
+<% if authorized_to_edit?(@post) %>
+  <a href="/posts/<%= @post.id %>/edit">Edit Entry</a>
+  <br><br>
+  <form class="" action="/posts/<%= @post.id %>" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" name="" value="Delete this Entry">
+  </form>
+<% end %>

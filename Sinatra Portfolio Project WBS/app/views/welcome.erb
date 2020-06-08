@@ -1,0 +1,24 @@
+<div class="container">
+  <!-- If a user is logged in, say "HEY, ${USERS NAME HERE}"-->
+  <!-- If a user is logged in, also have a log out button-->
+  <!-- If a user is logged in, provide the link to see all posts -->
+  <!-- If a user is NOT logged in, just show buttons to the login AND signup page-->
+
+  <% if logged_in %>
+    <h2>Hey, <%= current_user.username %></h2>
+    <a href="/logout">Logout</a> | <a href="#">View All Posts</a>
+  <% else  %>
+    <h2>Hey, you need to log in first</h2>
+    <a href="/signup">Signup</a> | <a href="/login">Login</a>
+  <% end %>
+</div>
+
+<h1>The Reviewers Review!</h1> #an apostraphe might break the code. (the fon't colos changed)
+<ul>
+  <li>
+<button><a href="/signup"><% '/signup' %>Sign Up</a></button>  
+</li>
+  <li>
+<button><a href="/login"><% '/login' %>Log In</a></button>  
+</li>
+</ul>
