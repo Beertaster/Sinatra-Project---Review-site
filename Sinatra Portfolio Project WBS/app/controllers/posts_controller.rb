@@ -8,6 +8,7 @@ class PostsController < ApplicationController
     #new
     get "/posts/new" do
       erb :"/posts/new.html"
+      flash[:notice] = "New post created."
     end
   
     # create
@@ -28,19 +29,9 @@ class PostsController < ApplicationController
         erb :'/posts/edit'
       else
         redirect "users/#{current_user.id}"
+        flash[:notice] = "not authorized user to edit these posts"
       end
     end
-
-    #patch
-    patch '/posts/:id' do 
-      if_not_logged_in
-      set_post
-      if authorized?(@post)
-        erb :'/posts/edit'
-      else
-        redirect "users/#{current_user.id}"
-      end
-    end 
 
     helpers do 
      

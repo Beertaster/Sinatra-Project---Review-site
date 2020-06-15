@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
 
     get '/signup' do
-      erb :'users/signup'
+      erb:'users/signup'
     end
   
     get '/login' do
-      erb :'users/login'
+      erb:'users/login'
     end
   
     post '/signup' do
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
         redirect to "/users/#{user.id}"
       else
         @error = "Invalid Credentials"
-        erb : '/login' 
+        erb:'/login' 
       end
     end
   
@@ -41,17 +41,18 @@ class UsersController < ApplicationController
        session[:user_id] = @user.id 
        redirect "/users/#{@user.id}"
      else 
-      redirect '/signup' 
+      redirect '/signup'
+      flash[:notice] = "invalid session id."
      end
     end 
  
     # SHOW 
     get '/users/:id' do 
-   
+     flash[:notice] = "your reviews."
     @user = User.find_by(id: params[:id])
     @posts = @user.posts 
     redirect_if_not_logged_in
-    erb :'/users/show'
+    erb:'/users/show'
     end 
   
 end
